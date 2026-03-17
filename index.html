@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIRAMS - 동남권원자력의학원 납품관리시스템</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body class="login-page">
+
+  <div class="login-container">
+
+    <!-- 좌측 브랜드 패널 -->
+    <div class="login-brand">
+      <div class="login-logo">
+        <div class="login-logo-icon">
+          <!-- 원자 아이콘 -->
+          <svg viewBox="0 0 30 30" fill="none">
+            <circle cx="15" cy="15" r="3" fill="white"/>
+            <ellipse cx="15" cy="15" rx="13" ry="5" stroke="white" stroke-width="1.5" fill="none"/>
+            <ellipse cx="15" cy="15" rx="13" ry="5" stroke="white" stroke-width="1.5" fill="none" transform="rotate(60 15 15)"/>
+            <ellipse cx="15" cy="15" rx="13" ry="5" stroke="white" stroke-width="1.5" fill="none" transform="rotate(120 15 15)"/>
+          </svg>
+        </div>
+        <div class="login-logo-text">
+          <div class="login-logo-name">동남권원자력의학원</div>
+          <div class="login-logo-sub">DIRAMS · Computer Assisted Ordering</div>
+        </div>
+      </div>
+
+      <h1 class="login-brand-title">납품관리시스템</h1>
+      <p class="login-brand-slogan">"대한민국 방사선의학을 세계로"</p>
+
+      <!-- 발주 프로세스 간략 안내 -->
+      <div style="margin-top: auto;">
+        <p style="font-size: 0.8125rem; color: rgba(255,255,255,0.45); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;">정기 발주 일정</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); flex-shrink:0;"></div>
+            <span style="font-size: 0.9375rem; color: rgba(255,255,255,0.6);">매주 <strong style="color:rgba(255,255,255,0.9);">월요일</strong> 오전 납품 요구</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); flex-shrink:0;"></div>
+            <span style="font-size: 0.9375rem; color: rgba(255,255,255,0.6);">당주 <strong style="color:rgba(255,255,255,0.9);">금요일</strong>까지 납품 완료</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.4); flex-shrink:0;"></div>
+            <span style="font-size: 0.9375rem; color: rgba(255,255,255,0.6);">모든 물품 <strong style="color:rgba(255,255,255,0.9);">직납 원칙</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 우측 로그인 폼 -->
+    <div class="login-form-panel">
+      <div class="login-form-header">
+        <h2 class="login-form-title"><span>MEMBERS</span> LOGIN</h2>
+        <p class="login-form-desc">아이디와 비밀번호를 입력해주세요.</p>
+      </div>
+
+      <!-- 오류 메시지 -->
+      <div class="login-error" id="loginError"></div>
+
+      <form id="loginForm" autocomplete="off" novalidate>
+        <div class="login-form-group">
+          <label class="login-form-label" for="username">아이디</label>
+          <div class="login-input-wrap">
+            <svg class="login-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <input type="text" id="username" name="username" class="login-input"
+              placeholder="아이디를 입력하세요" autocomplete="username">
+          </div>
+        </div>
+
+        <div class="login-form-group">
+          <label class="login-form-label" for="password">비밀번호</label>
+          <div class="login-input-wrap">
+            <svg class="login-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <input type="password" id="password" name="password" class="login-input"
+              placeholder="비밀번호를 입력하세요" autocomplete="current-password">
+          </div>
+        </div>
+
+        <button type="submit" class="login-submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+            <line x1="15" y1="12" x2="3" y2="12"/>
+          </svg>
+          로그인
+        </button>
+      </form>
+
+      <div class="login-footer">
+        <p>© 2025 동남권원자력의학원. All rights reserved.</p>
+        <p style="margin-top:4px;">문의: 재정운영팀 중앙창고 · 720-5378</p>
+        <!-- 테스트용 안내 -->
+        <p style="margin-top:12px; padding: 8px 12px; background: #f0f4f8; border-radius: 6px; font-size:0.7rem; color: #888;">
+          테스트 계정: <strong>nainemedical</strong> / <strong>1234</strong>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    // 이미 로그인 상태면 대시보드로
+    if (localStorage.getItem('dirams_session')) {
+      window.location.href = 'pages/dashboard.html';
+    }
+  </script>
+</body>
+</html>

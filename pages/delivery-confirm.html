@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>납품확인서 - DIRAMS</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
+</head>
+<body class="app-layout">
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- 헤더 -->
+  <header class="app-header">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="메뉴 열기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <a href="dashboard.html" class="header-brand" style="text-decoration: none; color: inherit; cursor: pointer;">
+      <div class="header-brand-logo">
+        <svg viewBox="0 0 22 22" fill="none">
+          <circle cx="11" cy="11" r="2.5" fill="white"/>
+          <ellipse cx="11" cy="11" rx="9.5" ry="3.8" stroke="white" stroke-width="1.2" fill="none"/>
+          <ellipse cx="11" cy="11" rx="9.5" ry="3.8" stroke="white" stroke-width="1.2" fill="none" transform="rotate(60 11 11)"/>
+          <ellipse cx="11" cy="11" rx="9.5" ry="3.8" stroke="white" stroke-width="1.2" fill="none" transform="rotate(120 11 11)"/>
+        </svg>
+      </div>
+      <div class="header-brand-text">
+        <div class="header-brand-title">동남권원자력의학원 납품관리시스템</div>
+        <div class="header-brand-sub">DIRAMS · Computer Assisted Ordering</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="header-user">
+        <span class="header-user-name" id="headerUserName"></span>
+        <a href="#" class="header-logout" data-action="logout">로그아웃</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-body">
+    <!-- 사이드바 -->
+    <aside class="app-sidebar" id="sidebar">
+      <nav class="sidebar-nav" role="navigation">
+        <div class="nav-group">
+          <span class="nav-group-label">납품관리시스템</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <div class="nav-parent-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                </svg>
+                납품지시
+              </div>
+              <ul class="nav-submenu">
+                <li><a href="delivery-list.html?status=waiting" class="nav-link">미접수</a></li>
+                <li><a href="delivery-list.html?status=received" class="nav-link">접수</a></li>
+                <li><a href="delivery-list.html?status=done" class="nav-link">납품완료</a></li>
+                <li><a href="delivery-list.html" class="nav-link">전체</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- 메인 -->
+    <main class="app-main">
+
+      <!-- 인쇄 미리보기 컨트롤바 -->
+      <div class="print-preview-bar print-hide">
+        <span class="print-preview-label">납품확인서 미리보기</span>
+        <div style="display:flex; gap: var(--space-2);">
+          <a id="btnBack" href="delivery-list.html" class="btn btn-ghost btn-sm" style="color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.2);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><polyline points="15 18 9 12 15 6"/></svg>
+            목록으로
+          </a>
+          <button onclick="window.print()" class="btn btn-primary btn-sm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;">
+              <polyline points="6 9 6 2 18 2 18 9"/>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+              <rect x="6" y="14" width="12" height="8"/>
+            </svg>
+            인쇄
+          </button>
+        </div>
+      </div>
+
+      <!-- A4 미리보기 영역 -->
+      <div class="print-preview-wrap">
+        <div class="print-document-preview" id="printDocument">
+          <!-- JS로 렌더링 -->
+          <div style="display:flex; align-items:center; justify-content:center; min-height:200px;">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../assets/js/utils.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script src="../assets/js/delivery-confirm.js"></script>
+</body>
+</html>

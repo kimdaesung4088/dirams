@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대시보드 - DIRAMS</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/table.css">
+  <link rel="stylesheet" href="../assets/css/form.css">
+</head>
+<body class="app-layout">
+
+  <!-- 오버레이 -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- 헤더 -->
+  <header class="app-header">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="메뉴 열기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+    <a href="dashboard.html" class="header-brand" style="text-decoration: none; color: inherit; cursor: pointer;">
+      <div class="header-brand-logo">
+        <svg viewBox="0 0 22 22" fill="none">
+          <circle cx="11" cy="11" r="2.5" fill="white"/>
+          <ellipse cx="11" cy="11" rx="9.5" ry="3.8" stroke="white" stroke-width="1.2" fill="none"/>
+          <ellipse cx="11" cy="11" rx="9.5" ry="3.8" stroke="white" stroke-width="1.2" fill="none" transform="rotate(60 11 11)"/>
+          <ellipse cx="11" cy="11" rx="9.5" ry="3.8" stroke="white" stroke-width="1.2" fill="none" transform="rotate(120 11 11)"/>
+        </svg>
+      </div>
+      <div class="header-brand-text">
+        <div class="header-brand-title">동남권원자력의학원 납품관리시스템</div>
+        <div class="header-brand-sub">DIRAMS · Computer Assisted Ordering</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="header-user">
+        <span class="header-user-name" id="headerUserName"></span>
+        <a href="#" class="header-logout" data-action="logout">로그아웃</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-body">
+    <!-- 사이드바 -->
+    <aside class="app-sidebar" id="sidebar">
+      <nav class="sidebar-nav" role="navigation" aria-label="주메뉴">
+        <div class="nav-group">
+          <span class="nav-group-label">납품관리시스템</span>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <div class="nav-parent-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+                납품지시
+              </div>
+              <ul class="nav-submenu">
+                <li><a href="delivery-list.html?status=waiting" class="nav-link">미접수 <span class="nav-badge" id="badgeWaiting">0</span></a></li>
+                <li><a href="delivery-list.html?status=received" class="nav-link">접수</a></li>
+                <li><a href="delivery-list.html?status=done" class="nav-link">납품완료</a></li>
+                <li><a href="delivery-list.html" class="nav-link">전체</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- 메인 -->
+    <main class="app-main">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1 class="page-title">알림</h1>
+          <nav class="breadcrumb" aria-label="경로">
+            <span>납품관리시스템</span>
+            <span class="breadcrumb-sep">›</span>
+            <span class="breadcrumb-current">대시보드</span>
+          </nav>
+        </div>
+      </div>
+
+      <div class="content-body">
+
+        <!-- KPI 카드 -->
+        <div class="kpi-grid">
+          <a href="delivery-list.html?status=waiting" class="kpi-card kpi-waiting">
+            <div class="kpi-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="kpi-card-value" id="kpiWaiting">0</div>
+            <div class="kpi-card-label">미접수</div>
+            <div class="kpi-card-sub">접수 대기 중</div>
+          </a>
+          <a href="delivery-list.html?status=received" class="kpi-card kpi-received">
+            <div class="kpi-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="kpi-card-value" id="kpiReceived">0</div>
+            <div class="kpi-card-label">접수</div>
+            <div class="kpi-card-sub">처리 중</div>
+          </a>
+          <a href="delivery-list.html?status=done" class="kpi-card kpi-done">
+            <div class="kpi-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6 9 17l-5-5"/>
+              </svg>
+            </div>
+            <div class="kpi-card-value" id="kpiDone">0</div>
+            <div class="kpi-card-label">납품완료</div>
+            <div class="kpi-card-sub">완료 건</div>
+          </a>
+          <a href="delivery-list.html" class="kpi-card kpi-urgent">
+            <div class="kpi-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            </div>
+            <div class="kpi-card-value" id="kpiUrgent">0</div>
+            <div class="kpi-card-label">긴급</div>
+            <div class="kpi-card-sub">긴급 처리 필요</div>
+          </a>
+        </div>
+
+        <!-- 납품지시 현황 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <svg class="card-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+              납품지시 현황
+            </div>
+          </div>
+
+          <!-- 필터 바 -->
+          <div style="padding: var(--space-4) var(--space-6); border-bottom: 1px solid var(--border-color); background: var(--color-gray-50);">
+            <div class="filter-bar" style="background: transparent; border: none; padding: 0; box-shadow: none;">
+              <div class="filter-group">
+                <span class="filter-label">발행일자</span>
+                <div class="date-range">
+                  <input type="date" id="dateFrom" class="form-control form-control-sm" value="2013-01-19">
+                  <span class="date-range-sep">~</span>
+                  <input type="date" id="dateTo" class="form-control form-control-sm" value="2013-03-19">
+                </div>
+              </div>
+              <div class="filter-actions">
+                <button class="btn btn-primary btn-sm" id="btnSearch">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  검색
+                </button>
+                <button class="btn btn-ghost btn-sm" id="btnReset">초기화</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 현황 테이블 -->
+          <div style="padding: var(--space-4) var(--space-6);">
+            <table style="width: 100%; border-collapse: collapse;">
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding: var(--space-4); background: var(--color-gray-50); font-weight: var(--font-semibold); font-size: var(--text-sm); color: var(--text-secondary); width: 120px;">미접수</td>
+                  <td style="padding: var(--space-4); font-size: var(--text-sm);" id="statusWaiting">-</td>
+                  <td style="padding: var(--space-4); text-align: right;"></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color);">
+                  <td style="padding: var(--space-4); background: var(--color-gray-50); font-weight: var(--font-semibold); font-size: var(--text-sm); color: var(--text-secondary);">접수</td>
+                  <td style="padding: var(--space-4); font-size: var(--text-sm);" id="statusReceived">-</td>
+                  <td style="padding: var(--space-4); text-align: right;"></td>
+                </tr>
+                <tr>
+                  <td style="padding: var(--space-4); background: var(--color-gray-50); font-weight: var(--font-semibold); font-size: var(--text-sm); color: var(--text-secondary);">납품완료</td>
+                  <td style="padding: var(--space-4); font-size: var(--text-sm);" id="statusDone">-</td>
+                  <td style="padding: var(--space-4); text-align: right;" id="statusDoneAction"></td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="margin-top: var(--space-4); font-size: var(--text-xs); color: var(--text-tertiary);">
+              ※ 납품확인서를 출력하기 위해서는 PDF 리더가 설치되어야 합니다.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/utils.js"></script>
+  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/sidebar.js"></script>
+  <script>
+    // 인증 확인
+    const session = localStorage.getItem('dirams_session');
+    if (!session) window.location.href = '../index.html';
+
+    // 날짜 기본값 (60일 전 ~ 오늘)
+    const today = new Date();
+    const from = new Date(); from.setDate(today.getDate() - 60);
+    document.getElementById('dateFrom').value = from.toISOString().slice(0,10);
+    document.getElementById('dateTo').value = today.toISOString().slice(0,10);
+
+    function renderDashboard() {
+      const dateFrom = document.getElementById('dateFrom').value;
+      const dateTo   = document.getElementById('dateTo').value;
+      const filtered = MOCK_DATA.filter({ dateFrom, dateTo });
+
+      const stats = {
+        waiting:  filtered.filter(d => d.status === 'waiting').length,
+        received: filtered.filter(d => d.status === 'received').length,
+        done:     filtered.filter(d => d.status === 'done').length,
+        urgent:   filtered.filter(d => d.isUrgent).length
+      };
+
+      // KPI 카드
+      document.getElementById('kpiWaiting').textContent  = stats.waiting;
+      document.getElementById('kpiReceived').textContent = stats.received;
+      document.getElementById('kpiDone').textContent     = stats.done;
+      document.getElementById('kpiUrgent').textContent   = stats.urgent;
+
+      // 사이드바 배지
+      const badge = document.getElementById('badgeWaiting');
+      if (badge) {
+        badge.textContent = stats.waiting;
+        badge.style.display = stats.waiting > 0 ? '' : 'none';
+      }
+
+      // 현황 테이블
+      document.getElementById('statusWaiting').textContent =
+        stats.waiting > 0 ? `${stats.waiting} 건 있습니다.` : '0 건 있습니다.';
+      document.getElementById('statusReceived').textContent =
+        stats.received > 0 ? `${stats.received} 건 있습니다.` : '0 건 있습니다.';
+      document.getElementById('statusDone').textContent =
+        stats.done > 0 ? `${stats.done} 건 있습니다.` : '0 건 있습니다.';
+
+      const doneAction = document.getElementById('statusDoneAction');
+      if (stats.done > 0) {
+        doneAction.innerHTML = `<a href="delivery-list.html?status=done" class="btn btn-outline btn-sm">내역보기</a>`;
+      } else {
+        doneAction.innerHTML = '';
+      }
+    }
+
+    document.getElementById('btnSearch').addEventListener('click', renderDashboard);
+    document.getElementById('btnReset').addEventListener('click', () => {
+      const today = new Date();
+      const from = new Date(); from.setDate(today.getDate() - 60);
+      document.getElementById('dateFrom').value = from.toISOString().slice(0,10);
+      document.getElementById('dateTo').value = today.toISOString().slice(0,10);
+      renderDashboard();
+    });
+
+    renderDashboard();
+  </script>
+</body>
+</html>
