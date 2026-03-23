@@ -496,7 +496,10 @@
   .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   .info-grid { grid-template-columns: 1fr; }
   .filter-bar { flex-direction: column; align-items: stretch; }
+  .filter-group { flex-wrap: wrap; }
   .filter-actions { margin-left: 0; }
+  .date-range { flex-wrap: wrap; width: 100%; }
+  .date-range .form-control { flex: 1; min-width: 0; }
   .process-flow { gap: var(--space-2); }
   .process-arrow { display: none; }
 }
