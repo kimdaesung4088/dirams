@@ -145,6 +145,15 @@
   z-index: 10;
 }
 .print-preview-label { color: rgba(255,255,255,0.7); }
+.print-preview-bar .btn-ghost {
+  color: rgba(255,255,255,0.7);
+  border-color: rgba(255,255,255,0.2);
+}
+.print-preview-bar .btn-ghost:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border-color: rgba(255,255,255,0.4);
+}
 
 .print-preview-wrap {
   background: var(--color-gray-300);
