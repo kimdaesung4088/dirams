@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <td class="date-cell ${overdue ? 'overdue' : ''}" data-label="납품기한">${Utils.formatDate(d.dueDate)}</td>
           <td class="date-cell" data-label="납품예정일">${Utils.formatDate(d.scheduledDate)}</td>
           <td class="date-cell" data-label="납품일자">${Utils.formatDate(d.deliveredAt)}</td>
-          <td class="center" data-label="긴급">${d.isUrgent ? Utils.getUrgentBadge(true) : ''}</td>
+          <td class="center" data-label="긴급">${Utils.getUrgentBadge(d.isUrgent)}</td>
           <td class="amount-cell" data-label="금액">${Utils.formatCurrency(d.totalAmount)}</td>
           <td class="center" data-label="상태">${Utils.getStatusBadge(d.status)}</td>
           <td class="items-cell" data-label="물품내역" title="${d.itemSummary}">${d.itemSummary}</td>

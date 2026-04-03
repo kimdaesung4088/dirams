@@ -151,6 +151,10 @@
   background: var(--color-danger-100);
   color: var(--color-danger-600);
 }
+.badge-normal {
+  background: #e9ecef;
+  color: #6c757d;
+}
 .badge-additional {
   background: var(--color-warning-100);
   color: var(--color-warning-600);
@@ -178,7 +182,7 @@
 /* ── KPI 카드 ── */
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
 }
 

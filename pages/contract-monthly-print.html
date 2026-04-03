@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>납품지시 상세 - DIRAMS</title>
+  <title>거래명세서 - DIRAMS</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
   <link rel="stylesheet" href="../assets/css/variables.css">
   <link rel="stylesheet" href="../assets/css/reset.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
   <link rel="stylesheet" href="../assets/css/components.css">
-  <link rel="stylesheet" href="../assets/css/table.css">
-  <link rel="stylesheet" href="../assets/css/form.css">
+  <link rel="stylesheet" href="../assets/css/print.css">
 </head>
 <body class="app-layout">
 
@@ -24,7 +23,7 @@
         <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
       </svg>
     </button>
-    <a href="dashboard.html" class="header-brand" style="text-decoration: none; color: inherit; cursor: pointer;">
+    <a href="dashboard.html" class="header-brand" style="text-decoration:none; color:inherit; cursor:pointer;">
       <div class="header-brand-text">
         <div class="header-brand-title">동남권원자력의학원 납품관리시스템</div>
       </div>
@@ -77,46 +76,42 @@
 
     <!-- 메인 -->
     <main class="app-main">
-      <div class="page-header">
-        <div class="page-header-left">
-          <h1 class="page-title">납품지시 상세</h1>
-          <nav class="breadcrumb">
-            <a href="dashboard.html">납품관리시스템</a>
-            <span class="breadcrumb-sep">›</span>
-            <a href="delivery-list.html">납품지시</a>
-            <span class="breadcrumb-sep">›</span>
-            <span class="breadcrumb-current" id="breadcrumbId">-</span>
-          </nav>
-        </div>
-        <div class="page-header-actions">
-          <a href="delivery-list.html" class="btn btn-ghost">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+
+      <!-- 컨트롤바 -->
+      <div class="print-preview-bar print-hide">
+        <span class="print-preview-label">거래명세서 미리보기</span>
+        <div style="display:flex; gap:var(--space-2);">
+          <a href="contract-monthly.html" class="btn btn-ghost btn-sm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><polyline points="15 18 9 12 15 6"/></svg>
             목록으로
           </a>
-          <button class="btn btn-outline" id="btnPrint">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <button onclick="window.print()" class="btn btn-primary btn-sm">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;">
               <polyline points="6 9 6 2 18 2 18 9"/>
               <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
               <rect x="6" y="14" width="12" height="8"/>
             </svg>
-            납품확인서 출력
+            인쇄
           </button>
         </div>
       </div>
 
-      <div class="content-body" id="detailContent">
-        <!-- JS로 렌더링 -->
-        <div class="empty-state" id="loadingState">
-          <div class="spinner"></div>
+      <!-- A4 미리보기 -->
+      <div class="print-preview-wrap">
+        <div class="print-document-preview auto-height" id="printDocument">
+          <div style="display:flex; align-items:center; justify-content:center; min-height:200px;">
+            <div class="spinner"></div>
+          </div>
         </div>
       </div>
+
     </main>
   </div>
 
   <script src="../assets/js/utils.js"></script>
-  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/mock-contract.js"></script>
   <script src="../assets/js/auth.js"></script>
   <script src="../assets/js/sidebar.js"></script>
-  <script src="../assets/js/delivery-detail.js"></script>
+  <script src="../assets/js/contract-monthly-print.js"></script>
 </body>
 </html>

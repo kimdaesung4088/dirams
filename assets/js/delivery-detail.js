@@ -50,7 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <td class="center" data-label="발주단위">${item.orderUnit}</td>
       <td class="center" data-label="환산수량">${Utils.formatNumber(item.convertQty)}</td>
       <td class="center" data-label="발주수량"><strong>${Utils.formatNumber(item.orderQty)}</strong></td>
-      <td class="center" data-label="입고수량">${Utils.formatNumber(item.receivedQty)}</td>
+      <td class="center" data-label="입고수량">
+        <input type="number" class="input-qty" value="${item.receivedQty}" min="0" style="width:80px; text-align:center; border:1px solid var(--border-color); border-radius:var(--radius-md); padding:var(--space-1) var(--space-2); font-size:var(--text-sm); background:var(--bg-surface); color:var(--text-primary);">
+      </td>
       <td class="center" data-label="반출수량">${Utils.formatNumber(item.returnedQty)}</td>
       <td class="center" data-label="납품수량">${Utils.formatNumber(item.deliveredQty)}</td>
       <td data-label="장소">${item.location}</td>
@@ -95,19 +97,29 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="info-item">
           <div class="info-item-label">납품예정일</div>
-          <div class="info-item-value">${Utils.formatDate(delivery.scheduledDate)}</div>
+          <div class="info-item-value">
+            <input type="date" id="inputScheduledDate" class="form-input-inline" value="${delivery.scheduledDate || ''}" style="border:1px solid var(--border-color); border-radius:var(--radius-md); padding:var(--space-1) var(--space-2); font-size:var(--text-sm); color:var(--text-primary); background:var(--bg-surface);">
+          </div>
         </div>
         <div class="info-item">
           <div class="info-item-label">납품일자</div>
           <div class="info-item-value">${Utils.formatDate(delivery.deliveredAt)}</div>
         </div>
         <div class="info-item">
-          <div class="info-item-label">합계금액</div>
+          <div class="info-item-label">긴급</div>
+          <div class="info-item-value">${Utils.getUrgentBadge(delivery.isUrgent)}</div>
+        </div>
+        <div class="info-item">
+          <div class="info-item-label">금액</div>
           <div class="info-item-value amount">${Utils.formatCurrency(totalAmount)}</div>
         </div>
         <div class="info-item">
-          <div class="info-item-label">발주유형</div>
-          <div class="info-item-value">${delivery.type === 'additional' ? '추가발주' : '정기발주'}</div>
+          <div class="info-item-label">상태</div>
+          <div class="info-item-value">${Utils.getStatusBadge(delivery.status)}</div>
+        </div>
+        <div class="info-item" style="grid-column: 1 / -1;">
+          <div class="info-item-label">물품내역</div>
+          <div class="info-item-value">${delivery.itemSummary || '-'}</div>
         </div>
       </div>
     </div>

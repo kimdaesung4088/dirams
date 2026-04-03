@@ -40,8 +40,8 @@ const Utils = {
 
   /* 긴급 배지 HTML */
   getUrgentBadge(isUrgent) {
-    if (!isUrgent) return '';
-    return `<span class="badge badge-urgent">긴급</span>`;
+    if (isUrgent) return `<span class="badge badge-urgent">긴급</span>`;
+    return `<span class="badge badge-normal">일반</span>`;
   },
 
   /* 발주 유형 배지 */

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>납품지시 목록 - DIRAMS</title>
+  <title>월별물품계약현황 - DIRAMS</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
   <link rel="stylesheet" href="../assets/css/variables.css">
@@ -24,7 +24,7 @@
         <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
       </svg>
     </button>
-    <a href="dashboard.html" class="header-brand" style="text-decoration: none; color: inherit; cursor: pointer;">
+    <a href="dashboard.html" class="header-brand" style="text-decoration:none; color:inherit; cursor:pointer;">
       <div class="header-brand-text">
         <div class="header-brand-title">동남권원자력의학원 납품관리시스템</div>
       </div>
@@ -60,7 +60,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="contract-monthly.html" class="nav-link nav-link-top">
+              <a href="contract-monthly.html" class="nav-link nav-link-top active">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                   <line x1="16" y1="2" x2="16" y2="6"/>
@@ -79,13 +79,11 @@
     <main class="app-main">
       <div class="page-header">
         <div class="page-header-left">
-          <h1 class="page-title" id="pageTitle">납품지시</h1>
+          <h1 class="page-title">월별물품계약현황</h1>
           <nav class="breadcrumb">
             <a href="dashboard.html">납품관리시스템</a>
             <span class="breadcrumb-sep">›</span>
-            <span>납품지시</span>
-            <span class="breadcrumb-sep">›</span>
-            <span class="breadcrumb-current" id="breadcrumbCurrent">전체</span>
+            <span class="breadcrumb-current">월별물품계약현황</span>
           </nav>
         </div>
       </div>
@@ -95,83 +93,77 @@
         <!-- 필터 바 -->
         <div class="filter-bar">
           <div class="filter-group">
-            <label class="filter-label" for="filterStatus">상태</label>
-            <select id="filterStatus" class="form-control form-control-sm" style="width: 120px;">
-              <option value="all">전체</option>
-              <option value="waiting">미접수</option>
-              <option value="received">접수</option>
-              <option value="done">납품완료</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <span class="filter-label">발행일자</span>
-            <div class="date-range">
-              <input type="date" id="filterDateFrom" class="form-control form-control-sm">
-              <span class="date-range-sep">~</span>
-              <input type="date" id="filterDateTo" class="form-control form-control-sm">
-            </div>
-          </div>
-          <div class="filter-actions">
-            <button class="btn btn-primary btn-sm" id="btnSearch">
+            <label class="filter-label" for="filterMonth">납품월</label>
+            <input type="text" id="filterMonth" class="form-control form-control-sm"
+              placeholder="예: 202603" maxlength="6" style="width:120px;">
+            <button class="btn btn-primary btn-sm" id="btnSearch" style="margin-left:var(--space-2);">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               검색
             </button>
-            <button class="btn btn-ghost btn-sm" id="btnReset">초기화</button>
+          </div>
+          <div style="margin-left:auto; font-size:var(--text-sm); color:var(--text-secondary); display:flex; align-items:center; gap:4px;">
+            총금액 :&nbsp;<strong id="totalAmount" style="color:var(--text-primary);">-</strong>
           </div>
         </div>
 
         <!-- 테이블 -->
         <div class="table-container">
           <div class="table-toolbar">
-            <div class="table-count">
-              총 <strong id="totalCount">0</strong>건
+            <div class="table-count">총 <strong id="totalCount">0</strong>건</div>
+            <div class="table-toolbar-actions">
+              <button class="btn btn-primary btn-sm" id="btnPrint">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;">
+                  <polyline points="6 9 6 2 18 2 18 9"/>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                  <rect x="6" y="14" width="12" height="8"/>
+                </svg>
+                출력
+              </button>
             </div>
           </div>
           <div class="table-wrapper">
-            <table class="data-table" aria-label="납품지시 목록">
+            <table class="data-table" aria-label="월별물품계약현황">
               <thead>
                 <tr>
-                  <th class="center">NO</th>
-                  <th>납품번호</th>
-                  <th>요구부서</th>
-                  <th>발행일자</th>
-                  <th>납품기한</th>
-                  <th>납품예정일</th>
-                  <th>납품일자</th>
-                  <th class="center">긴급</th>
-                  <th class="right">금액</th>
-                  <th class="center">상태</th>
-                  <th>물품내역</th>
+                  <th class="center" style="width:46px;">NO</th>
+                  <th style="width:90px;">물품코드</th>
+                  <th>물품명</th>
+                  <th class="right" style="width:76px;">단가</th>
+                  <th class="right" style="width:72px;">납품수량</th>
+                  <th class="right" style="width:90px;">금액</th>
+                  <th class="center" style="width:110px;">장소</th>
+                  <th class="center" style="width:100px; white-space:nowrap;">발행일</th>
+                  <th class="center" style="width:100px; white-space:nowrap;">납품일</th>
+                  <th class="center" style="width:90px;">구매요구일</th>
+                  <th class="center" style="width:80px;">계약일</th>
+                  <th class="center" style="width:80px;">지출결재일</th>
+                  <th class="center" style="width:72px;">결재상태</th>
                 </tr>
               </thead>
               <tbody id="tableBody">
-                <!-- JS로 렌더링 -->
               </tbody>
             </table>
           </div>
-          <!-- 빈 상태 -->
-          <div class="empty-state" id="emptyState" style="display:none;">
+          <div class="empty-state" id="emptyState">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
             </svg>
-            <div class="empty-state-title">해당 조건의 납품지시가 없습니다</div>
-            <div class="empty-state-desc">검색 조건을 변경하거나 초기화해 주세요.</div>
+            <div class="empty-state-title">납품월을 입력하고 검색하세요</div>
+            <div class="empty-state-desc">예: 202603</div>
           </div>
         </div>
-
-        <!-- 페이지네이션 -->
-        <div class="pagination" id="pagination"></div>
 
       </div>
     </main>
   </div>
 
   <script src="../assets/js/utils.js"></script>
-  <script src="../assets/js/mock-data.js"></script>
+  <script src="../assets/js/mock-contract.js"></script>
   <script src="../assets/js/auth.js"></script>
   <script src="../assets/js/sidebar.js"></script>
-  <script src="../assets/js/table-filter.js"></script>
-  <script src="../assets/js/delivery-list.js"></script>
+  <script src="../assets/js/contract-monthly.js"></script>
 </body>
 </html>

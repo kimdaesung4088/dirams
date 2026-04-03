@@ -173,6 +173,19 @@
   color: #000;
 }
 
+/* 거래명세서처럼 내용이 많은 문서 — 높이 제한 없이 자연스럽게 늘어남 */
+.print-document-preview.auto-height {
+  min-height: auto;
+}
+
+@media print {
+  .print-document-preview.auto-height {
+    box-shadow: none;
+    width: 100%;
+    padding: 10mm 15mm;
+  }
+}
+
 @media (max-width: 900px) {
   .print-preview-wrap { padding: var(--space-4); }
   .print-document-preview {

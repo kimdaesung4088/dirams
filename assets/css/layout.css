@@ -187,6 +187,9 @@
 
 .nav-submenu { }
 
+/* 단일 링크 메뉴 */
+.nav-link-top svg { width: 18px; height: 18px; opacity: 0.8; }
+
 .nav-submenu .nav-link {
   padding-left: calc(var(--space-5) + 28px);
   font-size: 1.0625rem;
