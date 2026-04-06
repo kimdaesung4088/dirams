@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td style="width:46%; vertical-align:top; padding:0; border-right:1px solid #000;">
           <table style="width:100%; border-collapse:collapse;">
             <tr>
-              <td rowspan="3" style="writing-mode:vertical-rl; text-orientation:mixed; text-align:center; padding:2mm; border-right:1px solid #000; font-weight:bold; font-size:8pt; white-space:nowrap;">공<br>급<br>받<br>는<br>자</td>
+              <td rowspan="3" style="writing-mode:vertical-rl; text-orientation:mixed; text-align:center; padding:2mm; border-right:1px solid #000; font-weight:bold; font-size:8pt; white-space:nowrap;">공급받는자</td>
               <td style="padding:1.5mm 2mm; border-bottom:1px solid #ccc; border-right:1px solid #000; white-space:nowrap; font-size:8pt; width:18mm;">상호<br>(법인명)</td>
               <td style="padding:1.5mm 2mm; border-bottom:1px solid #ccc; font-size:9pt;" colspan="2">${b.name}&nbsp;&nbsp;<strong>귀하</strong></td>
             </tr>
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td style="width:54%; vertical-align:top; padding:0;">
           <table style="width:100%; border-collapse:collapse;">
             <tr>
-              <td rowspan="4" style="writing-mode:vertical-rl; text-orientation:mixed; text-align:center; padding:2mm; border-right:1px solid #000; font-weight:bold; font-size:8pt; white-space:nowrap;">공<br>급<br>자</td>
+              <td rowspan="4" style="writing-mode:vertical-rl; text-orientation:mixed; text-align:center; padding:2mm; border-right:1px solid #000; font-weight:bold; font-size:8pt; white-space:nowrap;">공급자</td>
               <td style="padding:1.5mm 2mm; border-bottom:1px solid #ccc; border-right:1px solid #000; white-space:nowrap; font-size:8pt; width:16mm;">사업자<br>등록번호</td>
               <td style="padding:1.5mm 2mm; border-bottom:1px solid #ccc; font-size:9pt;" colspan="3">${s.bizNo}</td>
             </tr>

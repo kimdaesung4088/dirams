@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <td style="vertical-align:top; padding:0;">
             <table style="width:100%; border-collapse:collapse; font-size:8.5pt;">
               <tr>
-                <td rowspan="4" style="border:1px solid #666; padding:2mm; text-align:center; vertical-align:middle; width:14pt; writing-mode:vertical-rl; letter-spacing:0.3em; font-weight:bold; background:#f5f5f5;">공<br>급<br>자</td>
+                <td rowspan="4" style="border:1px solid #666; padding:2mm; text-align:center; vertical-align:middle; width:14pt; writing-mode:vertical-rl; letter-spacing:0.3em; font-weight:bold; background:#f5f5f5;">공급자</td>
                 <td style="border:1px solid #666; padding:2mm; background:#f5f5f5; font-weight:bold; width:50pt;">등록번호</td>
                 <td colspan="3" style="border:1px solid #666; padding:2mm; text-align:center; letter-spacing:0.1em;">621-82-11241</td>
               </tr>
