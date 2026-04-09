@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const filterMonth = document.getElementById('filterMonth');
   const btnSearch   = document.getElementById('btnSearch');
-  const btnPrint    = document.getElementById('btnPrint');
+  const btnPrint       = document.getElementById('btnPrint');
+  const btnPrintDetail = document.getElementById('btnPrintDetail');
   const tableBody   = document.getElementById('tableBody');
   const totalCount  = document.getElementById('totalCount');
   const totalAmount = document.getElementById('totalAmount');
@@ -85,5 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     window.location.href = `contract-monthly-print.html?ym=${ym}`;
+  });
+
+  btnPrintDetail.addEventListener('click', () => {
+    const ym = (filterMonth.value || '').trim();
+    if (!ym) {
+      alert('납품월을 입력하고 검색 후 출력하세요.');
+      return;
+    }
+    const data = MOCK_CONTRACT.getByMonth(ym);
+    if (!data) {
+      alert('해당 월의 데이터가 없습니다.');
+      return;
+    }
+    window.location.href = `contract-monthly-detail-print.html?ym=${ym}`;
   });
 });
