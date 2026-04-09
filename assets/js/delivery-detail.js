@@ -29,11 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const breadEl = document.getElementById('breadcrumbId');
   if (breadEl) breadEl.textContent = delivery.id;
 
-  // 저장 버튼
-  document.getElementById('btnSave')?.addEventListener('click', () => {
-    alert('저장되었습니다.');
-  });
-
   // 인쇄 버튼
   document.getElementById('btnPrint')?.addEventListener('click', () => {
     window.location.href = `delivery-confirm.html?id=${delivery.id}`;
@@ -183,6 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         목록으로
       </a>
+      <button class="btn btn-outline" id="btnSaveBottom">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+          <polyline points="17 21 17 13 7 13 7 21"/>
+          <polyline points="7 3 7 8 15 8"/>
+        </svg>
+        저장
+      </button>
       <a href="delivery-confirm.html?id=${delivery.id}" class="btn btn-primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="6 9 6 2 18 2 18 9"/>
@@ -196,6 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (loadingState) loadingState.remove();
   content.insertAdjacentHTML('beforeend', html);
+
+  document.getElementById('btnSaveBottom')?.addEventListener('click', () => {
+    alert('저장되었습니다.');
+  });
 
   function renderError(msg) {
     if (loadingState) loadingState.remove();
