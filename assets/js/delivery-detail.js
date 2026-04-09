@@ -29,6 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const breadEl = document.getElementById('breadcrumbId');
   if (breadEl) breadEl.textContent = delivery.id;
 
+  // 저장 버튼
+  document.getElementById('btnSave')?.addEventListener('click', () => {
+    alert('저장되었습니다.');
+  });
+
   // 인쇄 버튼
   document.getElementById('btnPrint')?.addEventListener('click', () => {
     window.location.href = `delivery-confirm.html?id=${delivery.id}`;
